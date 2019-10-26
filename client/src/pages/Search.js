@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import BookSearch from "../components/BookSearch";
 import BookResult from "../components/BookResult";
+import DeleteBtn from "../components/DeleteBtn";
 import Nav from "../components/Nav";
 import API from "../utils/API";
 
@@ -46,6 +47,12 @@ class Search extends Component {
             .catch(err => console.log(err));
     };
 
+    deleteBook = (id, author, description, image, link) => {
+        console.log("delete book " + id + ": " + description);
+        /*API.deleteBook(id)
+          .then(res => this.loadBooks())
+          .catch(err => console.log(err));*/
+    };
 
     render() {
         return (
@@ -69,19 +76,38 @@ class Search extends Component {
                         <h1>Render Books Here</h1>
                         <Col size="md-12">
                             {this.state.books.map(book => (
-                                <BookResult
-                                    key={book.volumeInfo.id}
-                                    title={book.volumeInfo.title}
-                                    author={book.volumeInfo.authors !== undefined
-                                        ? book.volumeInfo.authors.join(", ")
-                                        : "No author given"}
-                                    description={book.volumeInfo.description}
-                                    image={book.volumeInfo.imageLinks !== undefined
-                                        ? book.volumeInfo.imageLinks.smallThumbnail
-                                        : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE"}
-                                    link={book.volumeInfo.infoLink}
-                                    saveBook={event => this.handleSaveButton}
-                                />
+                                <div>
+                                    <BookResult
+                                        key={book.volumeInfo.id}
+                                        title={book.volumeInfo.title}
+                                        author={book.volumeInfo.authors !== undefined
+                                            ? book.volumeInfo.authors.join(", ")
+                                            : "No author given"}
+                                        description={book.volumeInfo.description}
+                                        image={book.volumeInfo.imageLinks !== undefined
+                                            ? book.volumeInfo.imageLinks.smallThumbnail
+                                            : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE"}
+                                        link={book.volumeInfo.infoLink}
+                                        saveBook={event => this.handleSaveButton(
+                                            book.volumeInfo.title,
+                                            book.volumeInfo.authors !== undefined
+                                                ? book.volumeInfo.authors
+                                                : [ "No author given" ],
+                                            book.volumeInfo.description,
+                                            book.volumeInfo.imageLinks !== undefined
+                                                ? book.volumeInfo.imageLinks.smallThumbnail
+                                                : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE",
+                                            book.volumeInfo.infoLink
+                                        )}
+                                    />
+                                    <DeleteBtn onClick={() => this.handleSaveButton(
+                                        book.volumeInfo.title,
+                                        book.volumeInfo.author,
+                                        book.volumeInfo.description,
+                                        book.volumeInfo.image,
+                                        book.volumeInfo.link
+                                    )} />
+                                </div>
                             ))}
                         </Col>
                     </Row>

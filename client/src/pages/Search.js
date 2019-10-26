@@ -34,11 +34,11 @@ class Search extends Component {
             .catch(err => console.log(err));
     };
 
-    handleSaveButton = (title, author, description, image, link) => {
+    handleSaveButton = (title, authors, description, image, link) => {
         console.log("save button clicked: " + title);
         API.saveBook({
             title: title,
-            author: author,
+            authors: authors,
             description: description,
             image: image,
             link: link
@@ -100,13 +100,6 @@ class Search extends Component {
                                             book.volumeInfo.infoLink
                                         )}
                                     />
-                                    <DeleteBtn onClick={() => this.handleSaveButton(
-                                        book.volumeInfo.title,
-                                        book.volumeInfo.author,
-                                        book.volumeInfo.description,
-                                        book.volumeInfo.image,
-                                        book.volumeInfo.link
-                                    )} />
                                 </div>
                             ))}
                         </Col>

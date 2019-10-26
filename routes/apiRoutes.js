@@ -2,6 +2,7 @@ const axios = require("axios");
 const router = require("express").Router();
 const booksController = require("../controllers/booksController");
 
+// Matches with "/api/search"
 router.get("/search", (req, res) => {
   //console.log(req.query);
   axios
@@ -11,7 +12,7 @@ router.get("/search", (req, res) => {
 });
 
 // Matches with "/api/books"
-router.route("api/books") // not sure this is right
+router.route("/books") // not sure this is right
   .get(booksController.findAll)
   .post(booksController.create);
 

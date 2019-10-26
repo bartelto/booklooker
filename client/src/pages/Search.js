@@ -47,6 +47,7 @@ class Search extends Component {
             .catch(err => console.log(err));
     };
 
+    // delete this function!
     deleteBook = (id, author, description, image, link) => {
         console.log("delete book " + id + ": " + description);
         /*API.deleteBook(id)

@@ -11,6 +11,25 @@ class Saved extends Component {
         books: []
     };
 
+    componentDidMount() {
+        this.loadBooks();
+    }
+
+    loadBooks = () => {
+        API.getBooks()
+            .then(res =>
+                this.setState({ books: res.data })
+            )
+            .catch(err => console.log(err));
+    };
+
+    deleteBook = (id) => {
+        console.log("delete book " + id);
+        API.deleteBook(id)
+          .then(res => this.loadBooks())
+          .catch(err => console.log(err));
+    };
+
     render() {
         return (
             <div>
@@ -22,17 +41,17 @@ class Saved extends Component {
                         <Col size="md-12">
                             {this.state.books.map(book => (
                                 <BookResult
-                                    key={book.volumeInfo.id}
-                                    title={book.volumeInfo.title}
-                                    author={book.volumeInfo.authors !== undefined
-                                        ? book.volumeInfo.authors.join(", ")
+                                    key={book._id}
+                                    title={book.title}
+                                    author={book.authors !== undefined
+                                        ? book.authors.join(", ")
                                         : "No author given"}
-                                    description={book.volumeInfo.description}
-                                    image={book.volumeInfo.imageLinks !== undefined
-                                        ? book.volumeInfo.imageLinks.smallThumbnail
+                                    description={book.description}
+                                    image={book.image !== undefined
+                                        ? book.image
                                         : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE"}
-                                    link={book.volumeInfo.infoLink}
-                                    saveBook={event => this.handleSaveButton}
+                                    link={book.link}
+                                    saveBook={() => this.deleteBook(book._id)}
                                 />
                             ))}
                         </Col>

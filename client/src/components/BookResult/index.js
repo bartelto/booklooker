@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
 
-function BookResult({ title, author, description, image, link, saveBook }) {
+function BookResult({ key, title, author, description, image, link, saveBook }) {
   return (
-    <div className="book-result">
+    <div className="book-result" key={key}>
       <h1 className="title">{title}</h1>
       <p className="author">{author}</p>
       <p className="description">{description}</p>

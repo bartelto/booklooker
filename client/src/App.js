@@ -1,14 +1,37 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 
+import BookSearch from "./components/BookSearch";
+import BookResult from "./components/BookResult";
+import Search from "./pages/Search";
+import Saved from "./pages/Saved";
+import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Jumbotron from "./components/Jumbotron";
 import { Container, Row, Col } from "./components/Grid";
-import BookSearch from "./components/BookSearch";
-import BookResult from "./components/BookResult";
+
 import API from "./utils/API";
 
+function App() {
+  return (
+    <Router>
+      <div>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Search} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/saved" component={Saved} />
+          <Route component={NoMatch} />
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+
+/*
 class App extends Component {
   state = {
     books: [],
@@ -27,7 +50,7 @@ class App extends Component {
   handleFormSubmit = event => {
     // When the form is submitted, prevent its default behavior, get books update the books state
     event.preventDefault();
-    API.getBooks(this.state.bookSearch)
+    API.searchBooks(this.state.bookSearch)
       .then(res => {
         console.log("data received!");
         console.log(res.data);
@@ -35,6 +58,20 @@ class App extends Component {
       })
       .catch(err => console.log(err));
   };
+
+  handleSaveButton = (title, author, description, image, link) => {
+    console.log("save button clicked: " + title);
+    API.saveBook({
+      title: title,
+      author: author,
+      description: description,
+      image: image,
+      link: link
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
+
 
   render() {
     return (
@@ -60,13 +97,16 @@ class App extends Component {
               {this.state.books.map(book => (
                 <BookResult
                   key={book.volumeInfo.id}
-                  title={book.volumeInfo.title} //"Harry Potter"
-                  author={book.volumeInfo.authors.join(", ")} //"J.K. Rowling"
-                  description={book.volumeInfo.description} //"A book about wizards."
+                  title={book.volumeInfo.title}
+                  author={book.volumeInfo.authors !== undefined
+                    ? book.volumeInfo.authors.join(", ")
+                    : "No author given"}
+                  description={book.volumeInfo.description}
                   image={book.volumeInfo.imageLinks !== undefined
                     ? book.volumeInfo.imageLinks.smallThumbnail
                     : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE"}
                   link={book.volumeInfo.infoLink}
+                  saveBook={event => this.handleSaveButton}
                 />
               ))}
             </Col>
@@ -76,5 +116,5 @@ class App extends Component {
     );
   }
 }
-
+*/
 export default App;

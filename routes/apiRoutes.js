@@ -1,7 +1,7 @@
 const axios = require("axios");
 const router = require("express").Router();
 
-router.get("/books", (req, res) => {
+router.get("/search", (req, res) => {
   //console.log(req.query);
   axios
     .get("https://www.googleapis.com/books/v1/volumes", { params: req.query })

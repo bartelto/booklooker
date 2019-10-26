@@ -9,8 +9,11 @@ function BookResult({ title, author, description, image, link }) {
       <p className="description">{description}</p>
       <img className="image" src={image} alt="book image"/>
       <a className="link" href={link} target="_blank">View</a>
+      
     </div>
   );
 }
+
+// <span className="save-btn" onClick={ saveBook(title, author, description, image, link) }>Save</span>
 
 export default BookResult;

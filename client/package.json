@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "booklooker",
   "version": "0.1.0",
-  "description": "Mern Demo",
+  "description": "Uses the Google Books API to search and save data for the user's favorite books.",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {

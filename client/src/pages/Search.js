@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import BookSearch from "../components/BookSearch";
 import BookResult from "../components/BookResult";
+import Nav from "../components/Nav";
 import API from "../utils/API";
 
 class Search extends Component {
@@ -49,6 +50,7 @@ class Search extends Component {
     render() {
         return (
             <div>
+                <Nav activePage="search" />
                 <Jumbotron />
                 <Container>
                     <Row>

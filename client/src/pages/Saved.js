@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import BookSearch from "../components/BookSearch";
 import BookResult from "../components/BookResult";
 import Nav from "../components/Nav";
 import API from "../utils/API";
@@ -26,8 +25,8 @@ class Saved extends Component {
     deleteBook = (id) => {
         console.log("delete book " + id);
         API.deleteBook(id)
-          .then(res => this.loadBooks())
-          .catch(err => console.log(err));
+            .then(res => this.loadBooks())
+            .catch(err => console.log(err));
     };
 
     render() {
@@ -37,8 +36,8 @@ class Saved extends Component {
                 <Jumbotron />
                 <Container>
                     <Row>
-                        <h1>Saved Books</h1>
                         <Col size="md-12">
+                            <h1>Saved Books</h1>
                             {this.state.books.map(book => (
                                 <BookResult
                                     key={book._id}
@@ -51,7 +50,7 @@ class Saved extends Component {
                                         ? book.image
                                         : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE"}
                                     link={book.link}
-                                    buttonText={"Delete"}
+                                    buttonIcon={"fas fa-trash-alt"}
                                     saveBook={() => this.deleteBook(book._id)}
                                 />
                             ))}

@@ -1,6 +1,15 @@
 .jumbotron {
   min-height: 300px;
   padding-top: 100px;
+  background: linear-gradient(to bottom, rgba(3,150,166,0.6) 0%, rgba(3,150,166, 0.6) 100%), 
+    url(../../assets/images/bookcase-books-bookstore-775998.jpg);
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
+
+.jumbotron a {
+  color: white;
 }
 
 h1, h2 {

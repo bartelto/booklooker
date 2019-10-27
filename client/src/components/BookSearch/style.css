@@ -1,3 +1,17 @@
 .book-search {
     margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn {
+    border-color: #025959;
+    background: linear-gradient(to bottom,#0396A6, #025959 );
+}
+
+.btn:hover {
+    background: linear-gradient(to bottom,  #0396A6 33%,  #025959 );
+}
+
+input, label, .btn {
+    font-family: 'Montserrat', sans-serif;
 }

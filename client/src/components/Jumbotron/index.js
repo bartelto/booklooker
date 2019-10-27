@@ -4,7 +4,7 @@ import "./style.css";
 function Jumbotron() {
   return (
     <div className="jumbotron text-center">
-      <h1>Booklooker</h1>
+      <h1>booklooker</h1>
       <a target="_blank" rel="noopener noreferrer" href="https://books.google.com/">
         Powered by Google Books
       </a>

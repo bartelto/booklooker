@@ -74,7 +74,7 @@ class Search extends Component {
                 </Container>
                 <Container>
                     <Row>
-                        <h1>Render Books Here</h1>
+                        <h1>Results</h1>
                         <Col size="md-12">
                             {this.state.books.map(book => (
                                 <div>
@@ -89,6 +89,7 @@ class Search extends Component {
                                             ? book.volumeInfo.imageLinks.smallThumbnail
                                             : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE"}
                                         link={book.volumeInfo.infoLink}
+                                        buttonText={"Save"}
                                         saveBook={event => this.handleSaveButton(
                                             book.volumeInfo.title,
                                             book.volumeInfo.authors !== undefined

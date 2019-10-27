@@ -1,8 +1,37 @@
 .book-result {
   border: 1px solid black;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+  min-height: 22rem;
+}
+
+.title {
+  width: calc(100% - 200px);
+}
+
+.author {
+  font-weight: bolder;
+}
+
+.description {
+  margin-bottom: 0;
 }
 
 .image {
-  height: 100px;
+  height: 150px;
   width: auto;
+  float: left;
+  margin-right: 1rem;
+  margin-top: 0.3rem;
+}
+
+.btn-panel {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+.save-btn {
+  margin-left: 0.5rem;
 }

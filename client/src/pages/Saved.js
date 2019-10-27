@@ -51,6 +51,7 @@ class Saved extends Component {
                                         ? book.image
                                         : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE"}
                                     link={book.link}
+                                    buttonText={"Delete"}
                                     saveBook={() => this.deleteBook(book._id)}
                                 />
                             ))}

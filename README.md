@@ -9,10 +9,10 @@ Try it! [booklooker.herokuapp.com](http://booklooker.herokuapp.com)
 *Booklooker* is a single-page app created using the MERN stack: MongoDB, the Express web application framework, React, and Node.js. The app was initially bootstrapped using Create-React-App.
 
 ### Using Booklooker
-- On the main page of the app, enter a search term for a book. Booklooker performs a search using the Google Books API and displays the title, author(s), description, cover art, and a link to the book on Google Play.
+- On the main page of the app, enter a search term for a book. Booklooker performs a search using the [Google Books API](https://developers.google.com/books) and displays the title, author(s), description, cover art, and a link to the book on Google Play.
 - To view a book on Google Play, click the 👁 icon next to the search result.
 - To save a book as a favorite, click the bookmark icon next to the search result.
-- To view your saved books, click the *Saved* link in the navigation bar. The app will dispaly only the books that have been saved.
+- To view your saved books, click the *Saved* link in the navigation bar. The app will display only the books that have been saved.
 
 **NOTE:** In the interest of a simple demonstration of the app's capability, *Booklooker* does not use any user authentication. So remember: anybody can save books, and anyone can delete them!
 
@@ -22,8 +22,8 @@ Try it! [booklooker.herokuapp.com](http://booklooker.herokuapp.com)
 - [mongoose](https://www.npmjs.com/package/mongoose) - A MongoDB object-modeling tool designed to work in an asynchronous environment.
 - [react](https://www.npmjs.com/package/react) - A JavaScript library for creating user interfaces.
 - [react-dom](https://www.npmjs.com/package/react-dom) - The entry point to the DOM and server renderers for React.
-- react-router-dom
-- react-scripts
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) - DOM bindings for React Router.
+- [react-scripts](https://www.npmjs.com/package/react-scripts) - Includes scripts and configuration used by Create React App.
 
 ## The author
 

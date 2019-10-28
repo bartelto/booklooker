@@ -23,7 +23,7 @@ class Saved extends Component {
     };
 
     deleteBook = (id) => {
-        console.log("delete book " + id);
+        //console.log("delete book " + id);
         API.deleteBook(id)
             .then(res => this.loadBooks())
             .catch(err => console.log(err));

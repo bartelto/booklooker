@@ -27,11 +27,11 @@ class Search extends Component {
         event.preventDefault();
         API.searchBooks(this.state.bookSearch)
             .then(res => {
-                console.log("data received!");
-                console.log(res.data);
+                //console.log("data received!");
+                //console.log(res.data);
                 this.setState({
                     books: res.data,
-                    searchMessage: (res.data.length === 0 
+                    searchMessage: (res.data.length === 0
                         ? "No results."
                         : res.data.length + " results:")
                 });
@@ -42,9 +42,9 @@ class Search extends Component {
             });
     };
 
-    handleSaveButton = (title, authors, description, image, link) => {
-        console.log("save button clicked: " + title);
+    handleSaveButton = (googleId, title, authors, description, image, link) => {
         API.saveBook({
+            googleId: googleId,
             title: title,
             authors: authors,
             description: description,
@@ -53,14 +53,6 @@ class Search extends Component {
         })
             .then(res => console.log(res))
             .catch(err => console.log(err));
-    };
-
-    // delete this function!
-    deleteBook = (id, author, description, image, link) => {
-        console.log("delete book " + id + ": " + description);
-        /*API.deleteBook(id)
-          .then(res => this.loadBooks())
-          .catch(err => console.log(err));*/
     };
 
     render() {
@@ -86,32 +78,31 @@ class Search extends Component {
                             <h1>{this.state.searchMessage}</h1>
                             {this.state.books.length === 0 ? "" :
                                 this.state.books.map(book => (
-                                    <div>
-                                        <BookResult
-                                            key={book.volumeInfo.id}
-                                            title={book.volumeInfo.title}
-                                            author={book.volumeInfo.authors !== undefined
-                                                ? book.volumeInfo.authors.join(", ")
-                                                : "No author given"}
-                                            description={book.volumeInfo.description}
-                                            image={book.volumeInfo.imageLinks !== undefined
+                                    <BookResult
+                                        key={book.id}
+                                        title={book.volumeInfo.title}
+                                        author={book.volumeInfo.authors !== undefined
+                                            ? book.volumeInfo.authors.join(", ")
+                                            : "No author given"}
+                                        description={book.volumeInfo.description}
+                                        image={book.volumeInfo.imageLinks !== undefined
+                                            ? book.volumeInfo.imageLinks.smallThumbnail
+                                            : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE"}
+                                        link={book.volumeInfo.infoLink}
+                                        buttonIcon={"fas fa-bookmark"}
+                                        saveBook={event => this.handleSaveButton(
+                                            book.id,
+                                            book.volumeInfo.title,
+                                            book.volumeInfo.authors !== undefined
+                                                ? book.volumeInfo.authors
+                                                : ["No author given"],
+                                            book.volumeInfo.description,
+                                            book.volumeInfo.imageLinks !== undefined
                                                 ? book.volumeInfo.imageLinks.smallThumbnail
-                                                : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE"}
-                                            link={book.volumeInfo.infoLink}
-                                            buttonIcon={"fas fa-bookmark"}
-                                            saveBook={event => this.handleSaveButton(
-                                                book.volumeInfo.title,
-                                                book.volumeInfo.authors !== undefined
-                                                    ? book.volumeInfo.authors
-                                                    : ["No author given"],
-                                                book.volumeInfo.description,
-                                                book.volumeInfo.imageLinks !== undefined
-                                                    ? book.volumeInfo.imageLinks.smallThumbnail
-                                                    : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE",
-                                                book.volumeInfo.infoLink
-                                            )}
-                                        />
-                                    </div>
+                                                : "https://via.placeholder.com/100x150?text=COVER+NOT+AVALABLE",
+                                            book.volumeInfo.infoLink
+                                        )}
+                                    />
                                 ))}
                         </Col>
                     </Row>
